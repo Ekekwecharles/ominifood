@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+  /* outline: 4px dotted blue;
+  outline-offset: 9px; */
+}
+
 html {
   font-size: 62.5%;
 }
