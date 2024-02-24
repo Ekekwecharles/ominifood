@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ominifood Website</title>
+    <meta
+    name="description"
+    content="Omnifood is an AI-powered food subscription that will make you eat healthy again, 365 days per year. It's tailored to your personal tastes and nutritional needs."
+  />
+
+  <link rel="icon" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+    <title>Omnifood &mdash; cook again!</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
@@ -11,18 +20,45 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="queries.css" />
+
+
+    <!-- This is for ion-icons -->
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+
+  <!-- This is for safari browsers scroll effect -->
+  <script
+  defer
+  src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+></script>
+
+  <script defer src="js/script.js"></script>
   </head>
-  <body>
+   <body>
     <div class="hero-section">
       <nav class="nav">
-        <img src="img/omnifood-logo.png" alt="" />
+        <a href="#">
+          <img src="img/omnifood-logo.png" alt="" />
+        </a>
         <nav class="nav-links">
-          <a class="nav-link" href="#">How it works</a>
-          <a class="nav-link" href="#">Meals</a>
-          <a class="nav-link" href="#">Testomonials</a>
-          <a class="nav-link" href="#">Pricing</a>
-          <a class="nav-link cta" href="#">Try for free</a>
+          <a class="nav-link" href="#how">How it works</a>
+          <a class="nav-link" href="#meal">Meals</a>
+          <a class="nav-link" href="#testimonial">Testimonials</a>
+          <a class="nav-link" href="#pricing">Pricing</a>
+          <a class="nav-link cta" href="#cta">Try for free</a>
         </nav>
+
+        <button class="btn-mobile-nav">
+          <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+          <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
       </nav>
       <header class="header container grid grid--2-cols">
         <div class="head-box">
@@ -35,8 +71,8 @@
           </p>
 
           <div>
-            <a href="#" class="btn">Start eating well</a>
-            <a href="#" class="btn btn-less">Learn more &darr;</a>
+            <a href="#cta" class="btn">Start eating well</a>
+            <a href="#how" class="btn btn-less">Learn more &darr;</a>
           </div>
 
           <div class="customer">
@@ -55,10 +91,21 @@
         </div>
 
         <div class="hero-img">
-          <img
+          <!-- <img
             src="img/hero.png"
             alt="img of a woman eating, variety of meals in different in containers"
-          />
+          /> -->
+
+          <picture>
+            <source srcset="img/hero.webp" type="image/webp" />
+            <source srcset="img/hero-min.png" type="image/png" />
+
+            <img
+              src="img/hero-min.png"
+              class="hero-img"
+              alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+            />
+          </picture>
         </div>
       </header>
     </div>
@@ -74,7 +121,7 @@
       </div>
     </section>
 
-    <section class="steps-section">
+    <section class="steps-section" id="how">
       <div class="container--2">
         <span class="sub-heading">How it works</span>
         <h2 class="header-secondary">
@@ -140,7 +187,7 @@
       </div>
     </section>
 
-    <section class="meals-section">
+    <section class="meals-section" id="meal">
       <div class="meal-head container--2">
         <span class="sub-heading">Meals</span>
         <h2 class="header-secondary">
@@ -258,7 +305,7 @@
       </p>
     </section>
 
-    <section class="testimonial-section">
+    <section class="testimonial-section" id="testimonial">
       <div class="testimonial-gallery--grid">
         <div class="testimonials">
           <div>
@@ -364,13 +411,13 @@
       </div>
     </section>
 
-    <section class="pricing-section">
+    <section class="pricing-section" id="pricing">
       <div class="pricing-header container--2">
         <span class="sub-heading">Pricing</span>
         <h2 class="header-secondary">Eating well without breaking the bank</h2>
       </div>
 
-      <div class="pricing-grid">
+      <div class="pricing-grid container--2 class="footer-nav-col"">
         <div class="pricing-starter pricing">
           <div class="pricing-grid--header">
             <span class="sub-heading sub-heading--big">Starter</span>
@@ -476,7 +523,7 @@
       </div>
     </section>
 
-    <section class="container--2 form-section">
+    <section class="container--2 form-section" id="cta">
       <div class="form-grid">
         <div class="form">
           <h3 class="header-secondary">Get your first meal for free!</h3>
@@ -487,10 +534,11 @@
           </p>
 
           <div class="form-input">
-            <form action="#">
+            <form name="sign-up" netlify>
               <div>
                 <label for="name">Full Name</label>
-                <input placeholder="John Smith" type="text" name="" id="name" />
+                <input placeholder="John Smith" type="text" name="full-name"
+                required id="name" />
               </div>
 
               <div>
@@ -498,14 +546,15 @@
                 <input
                   placeholder="me@example.com"
                   type="email"
-                  name=""
+                  name="email"
+                  required
                   id="email"
                 />
               </div>
 
               <div>
                 <label for="referer"> Where did you hear from us?</label>
-                <select name="" id="referer">
+                <select  name="select-where" id="referer">
                   <option value="">Please choose one option:</option>
                   <option value="friends">Friends and family</option>
                   <option value="youtube">Youtube video</option>
@@ -547,7 +596,7 @@
           </div>
 
           <p class="copy-right">
-            Copyright © 2027 by Omnifood, Inc. All rights reserved.
+            Copyright &copy; <span class="year">2027</span> by Omnifood, Inc. All rights reserved.
           </p>
         </div>
 
@@ -561,7 +610,7 @@
           <p>415-201-6370 hello@omnifood.com</p>
         </div>
 
-        <div>
+        <div class="footer-nav-col">
           <h3>Account</h3>
           <ul>
             <li>Create account</li>
@@ -571,7 +620,7 @@
           </ul>
         </div>
 
-        <div>
+        <div class="footer-nav-col">
           <h3>Company</h3>
           <ul>
             <li>About Omnifood</li>
@@ -581,7 +630,7 @@
           </ul>
         </div>
 
-        <div>
+        <div class="footer-nav-col">
           <h3>Resources</h3>
           <ul>
             <li>Recipe directory</li>
@@ -591,14 +640,5 @@
         </div>
       </div>
     </footer>
-
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
   </body>
 </html>
